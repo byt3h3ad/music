@@ -1,0 +1,24 @@
+---
+interface Props {
+    artists: {
+        name: string;
+    }[];
+    songUrl: string;
+    title: string;
+    album: string;
+    image: string;
+}
+
+const {image, title, artists, album, songUrl} = Astro.props;
+---
+
+<div class="flex flex-row items-center space-x-4">
+    <img src={image} alt={title} class="w-16 h-16 rounded" />
+    <div class="flex flex-col">
+        <a href={songUrl}>
+        <h3 class="font-semibold text-neutral-100">{title}</h3>
+        </a>
+        <p class="text-sm">{artists.map(({ name }) => name).join(", ")}</p>
+        <p class="text-sm">{album}</p>
+    </div>
+</div>
