@@ -2,7 +2,6 @@
 import SongCard from "../components/SongCard.astro";
 import { getLastFmUser, getRecentTracks } from "../lib/lastfm";
 import { getCurrentTrack, getTopArtists, getTopTracks, getUser } from "../lib/spotify";
-export const prerender = true
 const tracks = await getTopTracks();
 const artists = await getTopArtists();
 const track = await getCurrentTrack();
