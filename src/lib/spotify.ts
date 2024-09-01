@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { Buffer } from "node:buffer";
 
 export async function getAccessToken(): Promise<{ access_token: string }> {
   const refreshToken = import.meta.env.SPOTIFY_REFRESH_TOKEN;
