@@ -4,7 +4,7 @@ const API_KEY = import.meta.env.LASTFM_API_KEY;
 
 export const getLastFmUser = async () => {
   const response = await fetch(
-    `https://ws.audioscrobbler.com/2.0/?method=user.getinfo&user=notbytehead&api_key=${API_KEY}&format=json`
+    `https://ws.audioscrobbler.com/2.0/?method=user.getinfo&user=notbytehead&api_key=${API_KEY}&format=json`,
   ).then((res) => res.json());
 
   const { user } = z
@@ -21,7 +21,7 @@ export const getLastFmUser = async () => {
           z.object({
             "#text": z.string(),
             size: z.string(),
-          })
+          }),
         ),
         url: z.string(),
       }),
@@ -32,7 +32,7 @@ export const getLastFmUser = async () => {
 
 export const getRecentTracks = async (limit: number) => {
   const response = await fetch(
-    `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=notbytehead&api_key=${API_KEY}&format=json&limit=${limit}`
+    `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=notbytehead&api_key=${API_KEY}&format=json&limit=${limit}`,
   ).then((res) => res.json());
 
   const { recenttracks } = z
@@ -52,14 +52,14 @@ export const getRecentTracks = async (limit: number) => {
             image: z.array(
               z.object({
                 "#text": z.string(),
-              })
+              }),
             ),
             "@attr": z
               .object({
                 nowplaying: z.string().optional(),
               })
               .optional(),
-          })
+          }),
         ),
       }),
     })

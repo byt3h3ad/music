@@ -9,7 +9,7 @@ export async function getAccessToken(): Promise<{ access_token: string }> {
     method: "POST",
     headers: {
       Authorization: `Basic ${Buffer.from(
-        `${clientId}:${clientSecret}`
+        `${clientId}:${clientSecret}`,
       ).toString("base64")}`,
       "Content-Type": "application/x-www-form-urlencoded",
     },
@@ -37,7 +37,7 @@ export async function getTopTracks() {
       headers: {
         Authorization: `Bearer ${access_token}`,
       },
-    }
+    },
   ).then((res) => res.json());
 
   const { items } = z
@@ -47,21 +47,21 @@ export async function getTopTracks() {
           artists: z.array(
             z.object({
               name: z.string(),
-            })
+            }),
           ),
           album: z.object({
             name: z.string(),
             images: z.array(
               z.object({
                 url: z.string(),
-              })
+              }),
             ),
           }),
           external_urls: z.object({
             spotify: z.string(),
           }),
           name: z.string(),
-        })
+        }),
       ),
     })
     .parse(response);
@@ -104,7 +104,7 @@ export async function getTopArtists() {
       headers: {
         Authorization: `Bearer ${access_token}`,
       },
-    }
+    },
   ).then((res) => res.json());
 
   const { items } = z
@@ -115,7 +115,7 @@ export async function getTopArtists() {
           images: z.array(
             z.object({
               url: z.string(),
-            })
+            }),
           ),
           external_urls: z.object({
             spotify: z.string(),
@@ -123,7 +123,7 @@ export async function getTopArtists() {
           followers: z.object({
             total: z.number(),
           }),
-        })
+        }),
       ),
     })
     .parse(response);
@@ -135,7 +135,7 @@ export async function getTopArtists() {
     followers: getFollowersOfArtistFromId(
       item.external_urls.spotify.split("/")[
         item.external_urls.spotify.split("/").length - 1
-      ]
+      ],
     ).then((res) => res.toLocaleString()),
   }));
 }
@@ -160,7 +160,7 @@ export const getUser = async () => {
       images: z.array(
         z.object({
           url: z.string(),
-        })
+        }),
       ),
     })
     .parse(response);
@@ -182,7 +182,7 @@ export const getCurrentTrack = async () => {
       headers: {
         Authorization: `Bearer ${access_token}`,
       },
-    }
+    },
   );
   if (response.status !== 200) {
     return null;
@@ -194,14 +194,14 @@ export const getCurrentTrack = async () => {
           artists: z.array(
             z.object({
               name: z.string(),
-            })
+            }),
           ),
           album: z.object({
             name: z.string(),
             images: z.array(
               z.object({
                 url: z.string(),
-              })
+              }),
             ),
           }),
           external_urls: z.object({
