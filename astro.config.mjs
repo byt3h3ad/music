@@ -2,16 +2,11 @@ import { defineConfig } from "astro/config";
 
 import tailwind from "@astrojs/tailwind";
 
-import cloudflare from "@astrojs/cloudflare";
+import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind()],
   output: "server",
-  adapter: cloudflare(),
-  vite: {
-    ssr: {
-      external: ["node:buffer"],
-    },
-  },
+  adapter: vercel(),
 });
