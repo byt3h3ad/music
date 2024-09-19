@@ -8,8 +8,6 @@ import {
   getUser,
 } from "../lib/spotify";
 
-export const prerender = false;
-
 const tracks = await getTopTracks();
 const artists = await getTopArtists();
 const track = await getCurrentTrack();
@@ -27,7 +25,7 @@ const recentTracks = await getRecentTracks(5);
     <title>adhiraj</title>
   </head>
   <body
-    class="bg-black text-neutral-100 mx-16 mb-8 grid grid-cols-1 md:grid-cols-3 gap-8"
+    class="bg-black text-neutral-100 mx-16 mb-8 grid grid-cols-1 md:grid-cols-3 gap-8 font-mono"
   >
     <section class="my-8">
       <div>
@@ -61,6 +59,21 @@ const recentTracks = await getRecentTracks(5);
             <p class="text-sm">{lastFM.artist_count} artists</p>
           </div>
         </div>
+      </div>
+      <div class="grid my-8">
+        <p>vain attempt to show off my trash music taste.</p>
+        <a
+          href="https://home.byt3h3ad.workers.dev/website"
+          class="underline underline-offset-2 hover:opacity-80">website</a
+        >
+        <a
+          href="https://home.byt3h3ad.workers.dev/github"
+          class="underline underline-offset-2 hover:opacity-80">github</a
+        >
+        <a
+          href="https://github.com/byt3h3ad/music"
+          class="underline underline-offset-2 hover:opacity-80">source code</a
+        >
       </div>
       {
         track ? (
