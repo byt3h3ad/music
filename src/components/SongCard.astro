@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 interface Props {
   artists: {
     name: string;
@@ -13,8 +15,14 @@ const { image, title, artists, album, songUrl } = Astro.props;
 ---
 
 <div class="flex flex-row items-center space-x-4 group">
-  <img src={image} alt={title} class="w-16 h-16 rounded" />
-  <div class="flex flex-col">
+  <Image
+    src={image}
+    alt={title}
+    width={64}
+    height={64}
+    class="rounded flex flex-shrink-0 object-cover"
+  />
+  <div class="flex flex-grow-0 flex-col">
     <a href={songUrl}>
       <h3 class="font-semibold text-neutral-100 group-hover:underline">
         {title}
