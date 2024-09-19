@@ -1,4 +1,5 @@
 ---
+import "@fontsource/zen-kaku-gothic-new";
 import SongCard from "../components/SongCard.astro";
 import { getLastFmUser, getRecentTracks } from "../lib/lastfm";
 import {
@@ -25,7 +26,7 @@ const recentTracks = await getRecentTracks(5);
     <title>adhiraj</title>
   </head>
   <body
-    class="bg-black text-neutral-100 mx-16 mb-8 grid grid-cols-1 md:grid-cols-3 gap-8 font-mono"
+    class="bg-black text-neutral-100 mx-10 mb-8 grid grid-cols-1 sm:mx-16 md:grid-cols-3 gap-8"
   >
     <section class="my-8">
       <div>
@@ -37,7 +38,11 @@ const recentTracks = await getRecentTracks(5);
           />
           <div class="flex flex-col">
             <a href={user.url}>
-              <h3 class="font-semibold group-hover:underline">{user.name}</h3>
+              <h3
+                class="font-semibold group-hover:underline underline-offset-2"
+              >
+                {user.name}
+              </h3>
             </a>
             <p class="text-sm">{user.country}</p>
             <p class="text-xs">{user.email}</p>
@@ -53,14 +58,18 @@ const recentTracks = await getRecentTracks(5);
           />
           <div class="flex flex-col">
             <a href={lastFM.url}>
-              <h3 class="font-semibold group-hover:underline">{lastFM.name}</h3>
+              <h3
+                class="font-semibold group-hover:underline underline-offset-2"
+              >
+                {lastFM.name}
+              </h3>
             </a>
             <p class="text-sm">{lastFM.playcount} scrobbles</p>
             <p class="text-sm">{lastFM.artist_count} artists</p>
           </div>
         </div>
       </div>
-      <div class="grid my-8">
+      <div class="grid my-8 font-mono">
         <p>vain attempt to show off my trash music taste.</p>
         <a
           href="https://home.byt3h3ad.workers.dev/website"
@@ -96,7 +105,7 @@ const recentTracks = await getRecentTracks(5);
                   />
                   <div class="flex flex-col">
                     <a href={d.url}>
-                      <h3 class="font-semibold text-neutral-100 group-hover:underline">
+                      <h3 class="font-semibold text-neutral-100 group-hover:underline underline-offset-2">
                         {d.name}
                       </h3>
                     </a>
@@ -131,11 +140,17 @@ const recentTracks = await getRecentTracks(5);
       <div class="flex flex-col gap-y-4">
         {
           artists.map(({ name, url, image, followers }) => (
-            <div class="flex flex-row items-center space-x-4 group">
-              <img src={image} alt={name} class="w-16 h-16 rounded" />
+            <div class="text-neutral-200 flex flex-row items-center space-x-4 group">
+              <img
+                src={image}
+                alt={name}
+                class="w-16 h-16 rounded flex-shrink-0"
+              />
               <div class="flex flex-col">
                 <a href={url}>
-                  <h3 class="font-semibold group-hover:underline">{name}</h3>
+                  <h3 class="text-neutral-100 font-semibold group-hover:underline underline-offset-2">
+                    {name}
+                  </h3>
                 </a>
                 <p>{followers} followers</p>
               </div>
@@ -146,3 +161,9 @@ const recentTracks = await getRecentTracks(5);
     </section>
   </body>
 </html>
+
+<style>
+  html {
+    font-family: "Zen Kaku Gothic New", sans-serif;
+  }
+</style>
