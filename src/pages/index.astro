@@ -1,6 +1,6 @@
 ---
-import "@fontsource/zen-kaku-gothic-new";
 import SongCard from "../components/SongCard.astro";
+import Layout from "../layouts/Layout.astro";
 import { getLastFmUser, getRecentTracks } from "../lib/lastfm";
 import {
   getCurrentTrack,
@@ -17,14 +17,7 @@ const lastFM = await getLastFmUser();
 const recentTracks = await getRecentTracks(5);
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>adhiraj loves music</title>
-  </head>
+<Layout>
   <body
     class="bg-black text-neutral-100 mx-10 mb-8 grid grid-cols-1 sm:mx-16 md:grid-cols-3 gap-8"
   >
@@ -160,10 +153,4 @@ const recentTracks = await getRecentTracks(5);
       </div>
     </section>
   </body>
-</html>
-
-<style>
-  html {
-    font-family: "Zen Kaku Gothic New", sans-serif;
-  }
-</style>
+</Layout>

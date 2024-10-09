@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+interface Props {
+  error: unknown;
+}
+
+const { error } = Astro.props;
+---
+
+<Layout>
+  <body class="bg-black text-neutral-100 grid place-content-center">
+    <div>
+      {
+        error instanceof Error
+          ? error.message
+          : "Oops, we got rate limited. Try again later!"
+      }
+    </div>
+  </body>
+</Layout>
